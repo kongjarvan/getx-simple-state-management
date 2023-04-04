@@ -38,88 +38,58 @@ class MainPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Center(
-                child: InkWell(
-                  onTap: () {
-                    controller.increase();
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    width: 150,
-                    height: 40,
-                    child: Center(
-                      child: Text(
-                        'Tap count : ${controller.count}',
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              buildIncreaseCountButton(controller),
               SizedBox(height: 10),
-              Center(
-                child: InkWell(
-                  onTap: () {
-                    controller.changeColor(0);
-                  },
-                  child: Container(
-                    width: 150,
-                    height: 60,
-                    color: Colors.white,
-                    child: Center(
-                      child: Text(
-                        'Tap to change background color to blue',
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              buildColorChangeButton(controller, 0, 'blue'),
               SizedBox(height: 10),
-              Center(
-                child: InkWell(
-                  onTap: () {
-                    controller.changeColor(1);
-                  },
-                  child: Container(
-                    width: 150,
-                    height: 60,
-                    color: Colors.white,
-                    child: Center(
-                      child: Text(
-                        'Tap to change background color to Red',
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              buildColorChangeButton(controller, 1, 'red'),
               SizedBox(height: 10),
-              Center(
-                child: InkWell(
-                  onTap: () {
-                    controller.changeColor(2);
-                  },
-                  child: Container(
-                    width: 150,
-                    height: 60,
-                    color: Colors.white,
-                    child: Center(
-                      child: Text(
-                        'Tap to change background color to Orange',
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              buildColorChangeButton(controller, 2, 'orange'),
             ],
           ),
         ),
       );
     });
+  }
+
+  Center buildIncreaseCountButton(ColorController controller) {
+    return Center(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        width: 150,
+        height: 40,
+        child: Center(
+          child: Text(
+            'Tap count : ${controller.count}',
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Center buildColorChangeButton(
+      ColorController controller, int index, String colorName) {
+    return Center(
+      child: InkWell(
+        onTap: () {
+          controller.changeColor(index);
+        },
+        child: Container(
+          width: 150,
+          height: 60,
+          color: Colors.white,
+          child: Center(
+            child: Text(
+              'Tap to change background color to $colorName',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -8,12 +8,11 @@ class ColorController extends GetxController {
 
   void changeColor(int index) {
     selectedIndex = index;
+    count++;
+
     update();
     Get.log('index : $selectedIndex');
   }
 
-  void increase() {
-    count++;
-    update();
-  }
+
 }
