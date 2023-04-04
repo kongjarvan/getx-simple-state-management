@@ -2,17 +2,13 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class ColorController extends GetxController {
-  int selectedIndex = 0;
+  RxInt selectedIndex = 0.obs;
 
-  int count = 0;
+  RxInt count = 0.obs;
 
-  void changeColor(int index) {
-    selectedIndex = index;
+  void changeColor(int value) {
+    selectedIndex(value);
     count++;
-
-    update();
     Get.log('index : $selectedIndex');
   }
-
-
 }

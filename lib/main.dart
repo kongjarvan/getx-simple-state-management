@@ -31,20 +31,21 @@ class MainPage extends StatelessWidget {
       Colors.orangeAccent
     ];
 
-    return GetBuilder<ColorController>(builder: (controller) {
+    return Obx(() {
       return Scaffold(
-        backgroundColor: colorList[controller.selectedIndex],
+        backgroundColor:
+            colorList[Get.find<ColorController>().selectedIndex.value],
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              buildIncreaseCountButton(controller),
+              buildIncreaseCountButton(Get.find<ColorController>()),
               SizedBox(height: 10),
-              buildColorChangeButton(controller, 0, 'blue'),
+              buildColorChangeButton(Get.find<ColorController>(), 0, 'blue'),
               SizedBox(height: 10),
-              buildColorChangeButton(controller, 1, 'red'),
+              buildColorChangeButton(Get.find<ColorController>(), 1, 'red'),
               SizedBox(height: 10),
-              buildColorChangeButton(controller, 2, 'orange'),
+              buildColorChangeButton(Get.find<ColorController>(), 2, 'orange'),
             ],
           ),
         ),
